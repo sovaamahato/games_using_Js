@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas
+      id="canvas"
+      height="300"
+      width="500"
+      style="background: linear-gradient( #1a3958, #08111b);"
+      
+    >
+    </canvas>
+
+    <script>
+      let canvas = document.getElementById("canvas");
+      let context = canvas.getContext("2d");
+
+      canvas.addEventListener("mousemove", (e) => {
+
+       context.clearRect(0,0,500,300);//to clear the canvas wala area
+               
+        context.beginPath();
+        context.fillStyle = "blue";
+         context.arc(e.clientX,e.clientY,35,0,360);
+        context.fill();
+
+        context.beginPath();
+        context.fillStyle = "red";
+        context.arc(e.clientX,e.clientY,25,0,360);
+        context.fill();
+
+        context.beginPath();
+        context.fillStyle = "yellow";
+
+        context.arc(e.clientX,e.clientY,15,0,360);
+        context.fill();
+      });
+    </script>
+  </body>
+</html>
