@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The perfect loop</title>
+</head>
+<body>
+    <canvas
+    width="500",
+    height="300",
+    id="canvas",
+    style="border: solid 2px black;"
+   
+
+    ></canvas>
+
+    <script>
+        let canvas = document.getElementById("canvas");
+        let context =canvas.getContext('2d');
+
+       
+// game loop 
+        i=0;
+        setInterval(()=>{
+            context.clearRect(0,0,500,300);
+            context.beginPath();
+        context.fillStyle="red";
+        context.rect(i,0,50,50);
+        context.fill();
+        //console.log("hello");
+        i=i+3;
+
+        },1000/60);
+
+
+        //it tells just to perform the task inside the function after the given millisecond
+        // setTimeout(()=>{
+           
+        // console.log("hello");
+      
+
+        // },1000);
+
+
+
+
+    </script>
+</body>
+</html>
