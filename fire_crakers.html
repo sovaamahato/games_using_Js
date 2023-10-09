@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="canvas" style="color: black"></canvas>
+
+    <script>
+      var t = 0;
+      let canvas = document.getElementById("canvas");
+      let context = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      context.fillStyle = "hsla(0,0%,0%,1)";
+
+      window.addEventListener(
+        "resize",
+
+        function () {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        },
+        false
+      );
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * (700 - 100) + 100;
+          this.y = Math.random() * (400 - 100) + 100;
+          // this.c=c;
+        }
+        draw() {
+          context.globalCompositeOperation = "source-over";
+          context.fillStyle = "hsla(0,0%,0%,1)";
+          context.fillRect(0, 0, canvas.width, canvas.height);
+          var kei, i, j, r;
+          kei = Math.sin(t) * 2 * Math.PI;
+          for (i = 0; i < 400; i++) {
+            r = 400 * Math.sin(i * kei);
+            context.globalCompositeOperation = "";
+            context.fillStyle = "hsla(" + i + 12 + ",100%,60%,1)";
+            context.fillStyle = "blue";
+            context.beginPath();
+            context.arc(
+              //   this.x,
+              //   this.y,
+              this.x + Math.sin(i) * r,
+              this.y + Math.cos(i) * r,
+              1.5,
+              0,
+              Math.PI * 2
+            );
+            context.fill();
+          }
+          t += 0.000005;
+          return (t %= 2 * Math.PI);
+        }
+      }
+
+      const partArr = [];
+      for (let i = 0; i < 2; i++) {
+        const obj1 = new Particle();
+        partArr.push(obj1);
+      }
+
+      function run() {
+        for (let i = 0; i < 2; i++) {
+          partArr[i].draw();
+        }
+        window.requestAnimationFrame(run);
+      }
+      run();
+    </script>
+  </body>
+</html>
