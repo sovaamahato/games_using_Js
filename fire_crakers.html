@@ -38,21 +38,25 @@
           context.fillStyle = "hsla(0,0%,0%,1)";
           context.fillRect(0, 0, canvas.width, canvas.height);
           var kei, i, j, r;
-          kei = Math.sin(t) * 2 * Math.PI;
+          kei = Math.sin(t) * 1.5 * Math.PI;
           for (i = 0; i < 400; i++) {
-            r = 400 * Math.sin(i * kei);
+            r = 300 * Math.sin(i * kei);
             context.globalCompositeOperation = "";
             context.fillStyle = "hsla(" + i + 12 + ",100%,60%,1)";
-            context.fillStyle = "blue";
+           // context.fillStyle = "green";
             context.beginPath();
             context.arc(
-              //   this.x,
-              //   this.y,
-              this.x + Math.sin(i) * r,
-              this.y + Math.cos(i) * r,
-              1.5,
+              //different position bata generate garna lai
+              // this.x + Math.sin(i) * r,
+              // this.y + Math.cos(i) * r,
+
+
+              Math.sin(i) * r*1.5+canvas.width/2,
+               Math.cos(i) * r+canvas.height/2,
+              5,
               0,
-              Math.PI * 2
+              Math.PI * 2,
+             
             );
             context.fill();
           }
@@ -61,19 +65,22 @@
         }
       }
 
-      const partArr = [];
+      let partArr = [];
       for (let i = 0; i < 2; i++) {
         const obj1 = new Particle();
         partArr.push(obj1);
       }
 
       function run() {
+        //context.clearRect(0, 0, 400, 400);
         for (let i = 0; i < 2; i++) {
           partArr[i].draw();
         }
         window.requestAnimationFrame(run);
       }
+
       run();
+      
     </script>
   </body>
 </html>
