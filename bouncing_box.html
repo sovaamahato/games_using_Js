@@ -16,18 +16,19 @@
         let ct=c.getContext("2d");
 
 
+        
         //class
         class Particle{
 
             constructor(){
                this.position={
-                x:100,
-                y:100,
+                x:Math.random() * canvas.width,
+                y:Math.random() * canvas.height-200,
                } ;
 
                this.size={
-                width:50,
-                height:50,
+                width:Math.random() * (2 - 0.5) + 2,
+                height:Math.random() * (2 - 0.5) + 2,
                };
 
                this.velocity={
@@ -39,7 +40,7 @@
 
             draw(){
                 ct.beginPath();
-                ct.fillStyle="blue";
+                ct.fillStyle="white";
                 ct.fillRect(
                     this.position.x,
                     this.position.y,
@@ -70,13 +71,26 @@
 
         }
 
-        const box=new Particle();
+
+        
+
+        let dheraiBoxHaru=[];
+        for(let i=0;i<50;i++){
+            const box=new Particle();
+            dheraiBoxHaru.push(box);
+
+        }
+
+
 
         function animate(){
             ct.clearRect(0,0,c.width,c.height);
-            box.draw();
-            box.move();
-            box.checkBoxCollision();
+            for(let i=0;i<50;i++){
+            dheraiBoxHaru[i].draw();
+            dheraiBoxHaru[i].move();
+            dheraiBoxHaru[i].checkBoxCollision();
+            }
+           
             requestAnimationFrame(animate);
         }
 
