@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <canvas
+    id="canvas"
+    height="400" width="500" style="background-color: black;"></canvas>
+</head>
+<body>
+    <script>
+
+        let c=document.getElementById("canvas");
+        let ct=c.getContext("2d");
+
+
+        //class
+        class Particle{
+
+            constructor(){
+               this.position={
+                x:100,
+                y:100,
+               } ;
+
+               this.size={
+                width:50,
+                height:50,
+               };
+
+               this.velocity={
+                x:1,
+                y:1,
+               };
+               this.acceleration=0.2;
+            }
+
+            draw(){
+                ct.beginPath();
+                ct.fillStyle="blue";
+                ct.fillRect(
+                    this.position.x,
+                    this.position.y,
+                    this.size.width,
+                    this.size.height,
+                );
+            }
+
+            move(){
+                //this will make the speed increase with time
+                this.velocity.y+=this.acceleration;
+
+                //this one y ko position change gardai tala sarna
+                this.position.y+=this.velocity.y;
+            }
+
+            checkBoxCollision(){
+                if(this.position.y+this.size.height>c.height){
+                    //collide huney bitikai box lai boundry ma basauna
+                    this.position.y=c.height-this.size.height;
+
+                    //tala boundary ma thokiyera mathi farkina lai
+                    this.velocity.y *=-0.8;
+                }
+            }
+
+
+
+        }
+
+        const box=new Particle();
+
+        function animate(){
+            ct.clearRect(0,0,c.width,c.height);
+            box.draw();
+            box.move();
+            box.checkBoxCollision();
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
