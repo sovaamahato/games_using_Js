@@ -75,7 +75,7 @@
         
 
         let dheraiBoxHaru=[];
-        for(let i=0;i<50;i++){
+        for(let i=0;i<100;i++){
             const box=new Particle();
             dheraiBoxHaru.push(box);
 
@@ -85,7 +85,7 @@
 
         function animate(){
             ct.clearRect(0,0,c.width,c.height);
-            for(let i=0;i<50;i++){
+            for(let i=0;i<100;i++){
             dheraiBoxHaru[i].draw();
             dheraiBoxHaru[i].move();
             dheraiBoxHaru[i].checkBoxCollision();
