@@ -11,14 +11,18 @@ class Bullet{
             y:-10,
         };
         
-        this.size=10;
+        this.size=20;
+
+        //to load image
+        this.img= new Image();
+        this.img.src='./flames.png';
 
     }
 
     draw(){
         c.beginPath();
         c.fillStyle='red';
-        c.fillRect(this.position.x, this.position.y,this.size,this.size);
+        c.drawImage(this.img,this.position.x, this.position.y,this.size,this.size);
         
     }
     move(){

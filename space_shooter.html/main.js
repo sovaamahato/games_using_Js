@@ -11,7 +11,7 @@ let bulletHaru=[];
 
 
 function loop(){
-    c.clearRect(0,0,500,400);
+    c.clearRect(0,0,canvas.width,canvas.height);
     
 rocket.update();
 for(let i=0;i<bulletHaru.length;i++){

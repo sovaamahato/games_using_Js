@@ -3,7 +3,7 @@ class Rocket{
 
         this.position={
             x:canvas.width/2.5,
-            y:canvas.height/2.5
+            y:canvas.height/1.5
         };
 
         this.velocity={
@@ -11,14 +11,18 @@ class Rocket{
             y:0
         };
         
-        this.size=40;
+        this.size=60;
+
+
+        this.img= new Image();
+        this.img.src='./rocket.png';
 
     }
 
     draw(){
         c.beginPath();
         c.fillStyle='blue';
-        c.fillRect(this.position.x, this.position.y,this.size,this.size);
+        c.drawImage(this.img,this.position.x, this.position.y,this.size,this.size);
         
     }
     move(){
